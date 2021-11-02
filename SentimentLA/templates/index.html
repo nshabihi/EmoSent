@@ -1,0 +1,162 @@
+<!doctype html>
+<html class="no-js" lang="en-CA">
+<head>
+    <meta charset="utf-8">   
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Sentiment Analysis</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+      
+    </header>
+    
+    <main>
+        <!--? slider Area Start-->
+        <section class="slider-area ">
+           
+            <!-- Single Slider -->
+            <div class="single-slider d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 col-md-12">
+                            <div class="hero__caption">
+                                <h1 data-animation="fadeInLeft" data-delay="0.2s">EmoSent!</h1>
+                                <p data-animation="fadeInLeft" data-delay="0.4s">Online Emotion and Sentiment Analysis Platform</p>
+                                <a href="/analyze.html" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Try Now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </div>
+        
+        </section>
+        <!--? About Area-1 Start -->
+        <section class="about-area1 fix pt-10">
+            <div class="support-wrapper align-items-center">
+                <div class="left-content1">
+                    <div class="about-icon">
+                        <img src="assets/img/icon/about.svg" alt="">
+                    </div>
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-55">
+                        <div class="front-text">
+                            <h2 class="">What is EmoSent?</h2>
+                            <p>The EmoSent analyzes the emotion and attitude expressed in a block of text or text conversation in social media for education. Currently, EmoSent only works for analyzing “Knowledge Forum” posts. By digging deeper into emotion and sentiment elements, the tool uncovers more context from students’ conversations and helps educators analyze students’ learning.</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>EmoSent analyzes text based on emotion and sentiment score;</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Currently, only works for the "Knowledge Forum" posts written in English.</p>
+                        </div>
+                    </div>
+
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>The results from the analysis are categorized in different visualization formats.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content1">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="assets/img/gallery/about.png" alt="">
+
+                        <div class="video-icon" >
+                            <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Area End -->        
+        <!--? About Area-3 Start -->
+        <section class="about-area3 fix">
+            <div class="support-wrapper align-items-center">
+                <div class="right-content3">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="assets/img/gallery/about3.png" alt="">
+                    </div>
+                </div>
+                <div class="left-content3">
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-20">
+                        <div class="front-text">
+                            <h2 class="">Who can use this tool?</h2>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Emosent aim to provide a better understanding of students’ attitude and emotion for the teachers. As teacher know about their students’ feelings they can better work on improving the content and form of instruction to enhance learning process and outcomes.</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>....</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>....</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Area End -->
+    </main>
+    <footer>
+     </footer> 
+  <!-- Scroll Up -->
+  <div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+{% load static %}
+<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'js/templatePrint.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

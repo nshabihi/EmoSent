@@ -1,0 +1,184 @@
+<html>
+
+<head>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  {% load static %}
+  <script type="text/javascript" src="{% static 'js/papaparse.min.js' %}"></script>
+
+
+
+</head>
+
+<body>  
+  <input type="hidden" id="myVar_bubble" name="variable" value="{{ data_str_bubble }}">
+  <input type="hidden" id="myVar_line" name="variable" value="{{ data_str_line }}">
+  <input type="file" id="upload-csv" accept=".csv">
+  <button id="btn-upload-csv">Read CSV</button>
+
+  {{ data_str_bubble }}
+  {{ data_str_line }}
+
+  <p id="demo"></p>
+
+  <figure class="highcharts-figure">  
+    <div id="bubble_container"></div>
+    <div id="line_container"></div>
+  </figure>
+
+  <script type='text/javascript'>
+    var teamName;
+    var bubblesize = 27;
+    var arraytoPush = [];
+    var dataArray = [];
+    var seriesArray = [];
+    var teamCounter = 1;
+    var myVar = document.getElementById("myVar_bubble").value;
+
+    intialization(function() {
+        createChart_bubble()
+    });
+
+    function intialization(callback){
+    	var j;
+    	for (j = 1; j < 3 ; j++)
+    	{
+    		teamName = "Team"+j.toString();
+    		var i;
+    		for (i = 0; i <6 ; i++){
+    			arrayToPush = [i,parseInt(myVar.charAt((j-1)*14+(i+1)*2)),bubblesize,j,teamName];
+      			dataArray.push(arrayToPush);
+    		}
+    		seriesArray.push({type:"bubble",color:randomColor(),data:dataArray});
+      		dataArray = [];
+    	}
+
+	    //var x = document.getElementById("demo");
+	    //x.innerHTML = arrayToPush.join();
+
+	    callback();
+    }   
+
+    function randomColor(){
+      var symbols, color;
+      symbols = "0123456789ABCDEF";
+
+      color = "#";
+      for (var i = 0;i<6;i++){
+        color = color + symbols[Math.floor(Math.random() * 16)];
+      }
+      console.log(color);
+      return color;
+    }
+
+    function createChart_bubble() {
+      Highcharts.chart('bubble_container', {
+
+
+        chart: {
+          type: 'bubble',
+          plotBorderWidth: 1,
+          zoomType: 'xy'
+        },
+
+        legend: {
+          enabled: false
+        },
+
+        title: {
+          text: 'Demo'
+        },
+
+        subtitle: {
+          text: ''
+        },
+
+        accessibility: {
+          point: {
+            valueDescriptionFormat: '{index}. {point.name}, Catagory: {point.x}, Score: {point.y},'
+          }
+        },
+
+        xAxis: {
+          gridLineWidth: 1,
+          title: {
+            text: ''
+          },
+          categories: [
+            "Joy", "Curiosity", 'Confidence', 'Neutrality','Challenge','Surprise'
+          ],
+          tickInterval: 1,
+
+          accessibility: {
+            rangeDescription: ''
+          }
+        },
+
+        yAxis: {
+          startOnTick: false,
+          endOnTick: false,
+          title: {
+            text: ''
+          },
+          labels: {
+            format: '{value} '
+          },
+          maxPadding: 0.2,
+
+          accessibility: {
+            rangeDescription: ''
+          }
+        },
+        legend: {
+          // layout: 'vertical',
+          // align:'left',
+          // verticalAlign:'top',
+          // x: 100,
+          // y: 70,
+          // floating: true,
+          backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+          borderWidth: 1,
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle',
+          borderWidth: 0
+        },
+
+        tooltip: {
+          useHTML: true,
+          headerFormat: '<table>',
+          pointFormat: '<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
+
+            '<tr><th>Score:</th><td>{point.y}</td></tr>',
+          footerFormat: '</table>',
+          followPointer: true
+        },
+
+        plotOptions: {
+          series: {
+            keys:['x','y','z','studentNum','name'],
+
+            dataLabels: {
+              enabled: true,
+              format: '{point.studentNum}'
+            }
+          }
+        },
+
+        credits: {
+          enabled: false
+        },
+        series:seriesArray
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+:root{
+    --ontColor-mid: #4e2583;
+    --ontColor-light: #4f2e84;
+    --ontColor-dark: #380e6e;
+    --secondaryColor: #FF9F67;
+}
+.hidden{
+    display: none;
+}
+#page-analyze .container-fluid{
+    height: 100vh;
+}
+body{
+    background: #eaeaee;
+}
+header{
+    min-height: 60px;
+    display: block;
+    background-color: transparent;  
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+h2, h3{
+    color: var(--ontColor-mid);
+}
+#preloader-active{
+    display: none;
+}
+.slider-area, #page-analyze .main{
+    background-color: #4e2583;  
+    background: linear-gradient(270deg, rgba(79,46,132,1) 0%, rgba(56,14,110,1) 100%);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.main-menu ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ .main-menu ul li a{
+    font-weight: bold;
+    color: var(--ontColor-mid);
+}
+ .main-menu ul li a:hover{
+    color: var(--secondaryColor);
+}
+ .main-menu ul li{
+    margin-bottom: 10px;
+    padding: 15px 20px 5px 20px;
+}
+.main-menu ul li:hover{    
+    border-bottom: 3px solid;
+    border-color: var(--secondaryColor);
+}
+#hamburger{
+    background-color: transparent;
+    border:0;
+    color: var(--ontColor-mid);
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+#page-analyze .help-block{
+    margin-top: 10px;
+
+}
+footer{
+    text-align: center;    
+    background: linear-gradient(270deg, rgba(79,46,132,1) 0%, rgba(56,14,110,1) 100%);
+    margin: 0;
+    margin-top: 40px;
+    padding: 20px;
+}
+footer p{
+    color: white;
+    margin: 0;
+}
+#back-top{
+    background-color: var(--ontColor-mid);
+    border: 1px solid #eaeaee;
+}
+.contact-section{
+    margin: auto 50px;
+    padding-top: 20px;
+}
+#page-analyze footer{    
+    width: 100%;
+}
+@media screen and (max-width: 767px){
+    #desktop-menu{
+        display: none;
+        width: 100%;        
+    }
+    #desktop-menu ul{
+        flex-direction: column;
+    }
+    #desktop-menu a{
+        color: var(--ontColor-mid);
+        font-weight: bold;
+    }
+    #desktop-menu li{
+        text-align: center;
+        
+    }
+    #desktop-menu.show{
+        display: flex;        
+    }
+    #hamburger{
+        display: block;
+    }
+}

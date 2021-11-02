@@ -1,0 +1,53 @@
+<html>
+<head>
+    
+<title>Sentiment Analysis</title> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/logIn.css' %}">  
+</head>
+<body>
+    
+    <div class = "container">
+        <div class = "menu">
+            <ul>
+            
+                <li><a href="/home/">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="/sentiment_analysis/">LAs</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class = "active"><a href="/login/" class = "signup-btn">Log in</a></li>
+            
+            </ul>    
+    
+        </div>
+    </div>
+    <div class = "login-box">
+     <h1>Login</h1>
+        <div class = "textbox">
+            <i class="fa fa-user" aria-hidden ="true"></i>
+            <input type="text" placeholder="Username" name="" value="">
+        
+        </div>
+        
+         <div class = "textbox">
+             <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" placeholder="Password" name="" value="">
+        
+        </div>
+        
+        <input class="btn" type="button" name="" value="Sign in">
+        <a href="#">Forgot Password</a><br>
+        <a href="/signup/">Create an Account</a>
+        
+    </div>
+    
+</body>   
+    
+    
+
+
+
+
+
+</html>

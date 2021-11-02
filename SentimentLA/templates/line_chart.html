@@ -1,0 +1,276 @@
+<html>
+
+<head>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  {% load static %}
+  <script type="text/javascript" src="{% static 'js/papaparse.min.js' %}"></script>
+
+
+</head>
+
+<body>
+  <input type="hidden" id="myVar_line" name="variable" value="{{ data_str_line }}">
+  <input type="file" id="upload-csv" accept=".csv">
+  <button id="btn-upload-csv">Read CSV</button>
+
+  <p id="demo"></p>
+
+  <figure class="highcharts-figure">
+    <div id="container"></div>
+
+  </figure>
+
+  <script type='text/javascript'>
+  var seriesArray = [];
+  var dataArray = [];
+  var current = 0;
+  var nameArray = ["Your Frustration", "Your Confusion", "Your Boredom", "Your Happiness","Your Motivation"];
+
+  var Frustration = 0;
+  var Confusion = 0;
+  var Boredom = 0;
+  var Happiness = 0;
+  var Motivation = 0;
+  var words;
+  var date;
+
+  var timeData;
+  var dataSeries_Frustration = [];
+  var dataSeries_Confusion = [];
+  var dataSeries_Boredom = [];
+  var dataSeries_Happiness = [];
+  var dataSeries_Motivation = [];
+  var time2;
+  var startTime = 1507188851000; // the start date of the chart (the number represents the number of miliseconds from 1970 Jan 01)
+  var currentTime = startTime;
+  var endTime = 1507707360000; // the last day of the chart
+  var currentVisit;
+
+  var seriesOptions = [],
+    seriesCounter = 0;
+    var myVar = document.getElementById("myVar_line").value;
+    
+  //var myVar = "10/19/2017  7:34:11,0,0,0,1,2&10/19/2017  7:35:35,0,0,1,0,1&10/19/2017  7:35:39,0,0,1,0,0&10/19/2017  7:35:48,0,0,0,0,1&10/19/2017  7:36:00,0,1,0,0,0&10/19/2017  12:36:00,0,1,0,0,1&10/21/2017  7:36:00,0,1,0,0,5&10/22/2017  10:30:00,0,1,0,0,2&10/25/2017  7:36:00,0,1,0,0,1"
+  
+
+  //document.write(myVar.toString());
+
+  intialization(function() {
+        createChart_line()
+    });
+
+  function intialization(callback){
+
+    while(currentTime<=endTime){
+      dataSeries_Frustration.push(0);
+      dataSeries_Confusion.push(0);
+      dataSeries_Boredom.push(0);
+      dataSeries_Happiness.push(0);
+      dataSeries_Motivation.push(0);
+      currentTime = currentTime + 3600000; // 3600000 represents 1 hour
+    }
+
+    var time;
+    var items = myVar.split("&");
+    items[9] = ""
+
+
+    for (j = 0; j < 10 ; j++)
+      {
+          item = items[j];
+          item = item.split(",");
+          
+
+          timeData = 0;
+          words = item;
+
+          date = item[0];
+          date = date.split("  ");
+          
+          if (date.length == 1) { break; }
+          
+          time = date[1];
+          date = date[0];
+          
+
+
+          date = date.split("/");
+          time = time.split(":");
+
+
+          timeData = timeData + (parseInt(date[2])-1970)*31536000000;
+          timeData = timeData + (parseInt(date[0])-1)*2592000000;
+
+          
+
+          timeData = timeData + (parseInt(date[1])*86400000);
+          timeData = timeData + (parseInt(time[0])*3600000);
+          timeData = timeData + parseInt(time[1])*60000;
+          timeData = timeData + parseInt(time[2])*1000;
+
+
+          Frustration = parseInt(words[1]);
+          Confusion = parseInt(words[2]);
+          Boredom = parseInt(words[3]);
+          Happiness = parseInt(words[4]);
+          Motivation = parseInt(words[5]);
+          timeData = (timeData - startTime)/3600000; // the number of hours in the chart
+          timeData = Math.ceil(timeData);
+          document.write(timeData);
+
+
+          dataSeries_Frustration[timeData]=Frustration;
+          dataSeries_Confusion[timeData]=Confusion;
+          dataSeries_Boredom[timeData]=Boredom;
+          dataSeries_Happiness[timeData]=Happiness;
+          dataSeries_Motivation[timeData]=Motivation;
+
+          document.write((typeof dataSeries_Frustration));   
+      }
+
+
+
+          seriesOptions[0] = {
+          name: "Your Frustration",
+          data: dataSeries_Frustration,
+          pointStart: Date.UTC(2017,9,19),
+          pointInterval: 3600*1000
+        };
+
+        seriesOptions[1] = {
+          name: "Your Confusion",
+          data: dataSeries_Confusion,
+          pointStart: Date.UTC(2017,9,19),
+          pointInterval: 3600*1000
+        };
+
+        seriesOptions[2] = {
+          name: "Your Boredom",
+          data: dataSeries_Boredom,
+          pointStart: Date.UTC(2017,9,19),
+          pointInterval: 3600*1000
+        };
+
+        seriesOptions[3] = {
+          name: "Your Happiness",
+          data: dataSeries_Happiness,
+          pointStart: Date.UTC(2017,9,19),
+          pointInterval: 3600*1000
+        };
+
+        seriesOptions[4] = {
+          name: "Your Motivation",
+          data: dataSeries_Motivation,
+          pointStart: Date.UTC(2017,9,19),
+          pointInterval: 3600*1000
+        };
+      callback();
+    }
+
+
+
+
+    function createChart_line() {
+
+      //document.write("chart")
+      //document.write(dataSeries_Frustration);
+      //document.write("sssss");
+      //document.write(dataSeries_Confusion);
+      //document.write("sssss");
+      //document.write(dataSeries_Boredom);
+      //document.write("sssss");
+      //document.write(dataSeries_Happiness);
+      //document.write("sssss");
+      //document.write(dataSeries_Motivation);
+      //document.write("sssss");
+
+      Highcharts.stockChart('container', {
+        chart: {
+          renderTo: 'container',
+          zoomType: 'xy',
+          panning: true,
+          panKey: 'shift',
+          plotBorderWidth: 1
+        },
+
+        title: {
+          text: 'Demo Chart'
+        },
+
+        subtitle: {
+          text: 'This is subtitle'
+        },
+
+
+        yAxis: {
+          title: {
+            text: 'Y axis'
+          },
+
+        },
+
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: {
+            month: '%e. %b',
+            year: '%b'
+          },
+          title: {
+            text: 'Date'
+          }
+        },
+        plotOptions: {
+          series: {
+            label: {
+              connectorAllowed: false
+            },
+
+          }
+        },
+
+
+        credits: {
+          enabled: false
+        },
+
+        legend: {
+          enabled: true,
+          align: 'center',
+          // backgroundColor: '#FCFFC5',
+          // borderColor: 'black',
+          // borderWidth: 2,
+          layout: 'horizontal',
+          verticalAlign: 'bottom',
+          y: 0,
+          //shadow: true
+        },
+
+
+        series: seriesOptions,
+
+        responsive: {
+          rules: [{
+            condition: {
+              maxWidth: 500
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+              }
+            }
+          }]
+        }
+      });
+
+    }
+
+    
+
+  </script>
+</body>
+
+</html>

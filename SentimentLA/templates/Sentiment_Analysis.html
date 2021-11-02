@@ -1,0 +1,66 @@
+ {% extends 'base.html' %}
+
+ <html>
+<head>
+    <title>
+        {% block title %}Sentiment Analysis{% endblock %}
+    </title>
+    
+    
+</head>
+<body>
+        
+        <header>
+          <h1>Sentiment Analysis</h1>
+        </header>
+
+
+        <div class = "selection">
+            <p>Select an option:</p>
+            <button href="#" class="btn">Free text</a>
+            <button href="#" class="btn">KF data</a>
+            <div class = "line2"></div>
+        </div>
+        
+        <input type="file" id="real-file" hidden="hidden" />
+        <span id="custom-text">No file chosen</span>
+        <button type="button" id="custom-button">Browse</button>
+        
+        
+
+        <div class="line3"></div>
+
+        <button href="#" class="proceedBtn">Proceed</button>
+
+
+        {% block content %}
+
+          {% load static %}<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+            <h2>Sentiment Analysis</h2>
+
+
+          <form method="post" enctype="multipart/form-data" action="/upload_file/">
+                {% csrf_token %}
+                <input type="file" name="document">
+                <button  type= "submit" class = "btn btn-primary">Upload file</button>
+          </form>
+          {% if url %} <!-- TODO-1 -->
+            <p>uploaded file: <a href="{{url}}">{{url}}</a></p>
+          {% endif %}
+
+
+          
+          <div class = "selection">
+                <p>
+                  <a href="/results/" class="btn btn-primary">Proceed</a>
+                </p>
+            </div>
+          
+
+        {% endblock %}
+
+    
+</body>
+</html>

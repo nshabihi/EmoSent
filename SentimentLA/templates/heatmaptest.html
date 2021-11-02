@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/boost-canvas.js"></script>
+  <script src="https://code.highcharts.com/modules/boost.js"></script>
+
+  {% load static %}
+  <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/papaparse.min.js' %}"></script>
+  
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">        
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">    
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">    
+  <link rel="stylesheet" href="{% static 'css/result.css' %}">    
+</head>
+
+<body data-spy="scroll" data-target="#navbar-charts" data-offset="0">
+
+  <input type="hidden" id="myVar_heatmap" name="variable" value="{{ data_str_heatmap }}">
+  <div class="card-body" id="heatmap_container"   style="height:600px;width:1000px;"></div>
+
+<script type="text/javascript" src="{% static 'js/heatmaptest.js' %}"></script>
+
+</body>
+</html>
+
+

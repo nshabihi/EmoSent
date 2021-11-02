@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <meta charset="utf-8">   
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <title>Results</title> 
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/boost-canvas.js"></script>
+  <script src="https://code.highcharts.com/modules/boost.js"></script>
+
+  <!-- <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js' %}"></script> -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+
+
+  {% load static %}
+  <script src="{% static '/js/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/papaparse.min.js' %}"></script>
+  
+
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">        
+  <link rel="stylesheet" href="{% static '/css/all.min.css' %}">    
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <link rel="stylesheet" href="{% static '/css/custom.css' %}">    
+  <link rel="stylesheet" href="{% static '/css/result.css' %}">      
+</head>
+
+<body id="results" data-spy="scroll" data-target="#navbar-charts" data-offset="0">
+  <header></header>
+  <input type="hidden" id="myVar_bubble" name="variable" value="{{ data_str_bubble }}">
+  <input type="hidden" id="myVar_bubble1" name="variable" value="{{ data_str_bubble1 }}">
+  <input type="hidden" id="myVar_line" name="variable" value="{{ data_str_line }}">
+  <input type="hidden" id="myVar_polar" name="variable" value="{{ data_str_polar }}">
+  <input type="hidden" id="myVar_scatter" name="variable" value="{{ data_str_scatter }}">
+  <input type="hidden" id="myVar_heatmap" name="variable" value="{{ data_str_heatmap }}">
+
+  <nav id="navbar-charts" class="nav card navbar navbar-light nav-pills flex-column">
+    <a v-for="chart in charts" class="nav-link" :href="makeHeaderLink(chart.header_id)">{{chart.title}}</a>   
+    
+  </nav>
+  <p id="demo"></p>
+  <div id="charts" class="container charts" >  
+      <chartbox_test :charts="charts" :students="students" @search-focused='getStudentList'></chartbox_test>
+  </div>
+  
+<footer></footer>
+<script src="{% static '/js/app.js' %}"></script>
+<script src="{% static '/js/components/chartbox_test.js' %}"></script>
+<script>const mountedApp = app.mount('#results')</script>
+
+<script src="{% static '/js/templatePrint.js' %}"></script>
+<script src="{% static '/js/custom.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/js/chart_bubble.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/chart_line.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/chart_polar.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/chart_scatter.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/chart_heatmap.js' %}"></script>
+</body>
+</html>

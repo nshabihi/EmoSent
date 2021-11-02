@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<html>
+<head>
+
+    <title>{% block title %}Sentiment Analysis{% endblock %}</title>
+    
+</head>
+<body>
+    <div class = "container">
+
+        
+        {% block content %}
+
+            {% load static %}<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+            <header>
+                <h1>Learning Analytics</h1>
+            </header>
+
+            <div class = "selection">
+                <p>Choose one of the Learning Analytics</p>
+                <p>
+                  <a href="/sentiment_analysis/" class="btn btn-primary">Sentiment Analysis</a>
+                </p>
+            </div>
+        {% endblock %}
+
+    </div>
+    </body>    
+</html>

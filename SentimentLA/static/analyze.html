@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="en-CA">
+<head>
+    <meta charset="utf-8">   
+    <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+    <title>Sentiment Analysis</title>    
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">        
+    <link rel="stylesheet" href="css/all.min.css">    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">    
+    <link rel="stylesheet" href="css/dropzone.css">    
+</head>
+<body id="page-analyze">        
+    <header>
+        
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>
+                    Description
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <form role="form" class="dropzone" action="/upload_file">                    
+                    <div class="form-group file-upload-wrapper">
+                         
+                        <label for="exampleInputFile">
+                            <h3>File input</h3>
+                        </label>
+                        <p class="help-block dz-message">
+                            Accepted file extensions: .doc,.docx,.csv,.txt,.xlsx, .xls
+                        </p>
+                        <input type="file" name="file" class="form-control-file" id="inputFile" accept=".doc,.docx,.csv,.txt,.xlsx,.xls">
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary">
+                        Proceed
+                    </button>
+                </form>
+            </div>
+        </div>       
+    </div>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/templatePrint.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/dropzone.js"></script>
+    <input type="hidden" id="my_message" name="variable" value="{{error_message}}">
+</body>
+</html>
